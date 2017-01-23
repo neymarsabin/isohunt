@@ -1,1 +1,40 @@
-* isohunt 
+#+TITLE: isoHunt 
+#+DESCRIPTION: A terminal based script to operate on iso files
+#+AUTHOR: neymarsabin
+#+EMAIL: reddevil.sabin@gmail.com
+
+
+* Introduction 
+	*isoHunt* is a bash script to operate on iso files.Listing contents of iso files, copying contents of iso file into another folder.
+
+* Motivation 
+	There were number of iso files and i have to repeatedly mount,copy and umount for each iso file.That was annoying so i decided to automate this process by a command.
+
+* Dependencies 
+	isoHunt uses following programs 
+	
+	| mount 	 |
+	| umount	 |
+	| tree		 |
+
+	To install ~tree~ command: 
+
+	#+BEGIN_SRC bash
+	sudo apt-get install tree
+	#+END_SRC
+	#+BEGIN_SRC bash
+	sudo pacman -S tree
+	#+END_SRC
+
+* Use isoHunt
+	Using isoHunt requires root access.So,be root or act like root :P 
+	Help's not that good but will be mending soon.
+	
+	#+BEGIN_SRC bash
+	./main.sh help
+	#+END_SRC
+
+* TODOS 
+** TODO A makefile
+** TODO Work with permissions 
+** TODO Some more operations 

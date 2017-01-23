@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-# A very basic shell script to mount iso files easily in linux using terminal..(removes headache of mouting copying and unmounting iso files)
 
 # some variables
 user=$(whoami)
 version=1.0.beta
-PASSWORD=google
 working_iso_file=$2
 mount_dir=/mnt/isofiles
 destination_dir=$3
@@ -19,28 +17,29 @@ function help {
 		echo "version = "$version
 }
 
+# mount the iso file 
 function mount_iso {
     sudo mount -o loop $1 $2 
-		echo "Operation completed"
 }
 
+#umount the iso file 
 function umount_iso {
 		sudo umount $mount_dir
 }
 
+#copy contents of iso file to specified destination 
 function copy_mode {
-    echo -e "Let\'s mount the iso file first"
 		mount_iso $working_iso_file $mount_dir
 		cp -r -vv -i $mount_dir/* $1
 		umount_iso
 }
 
+#main program:
 case $1 in
 		help)
 				help
 				;;
 		view)
-				echo "processing to list the files inside iso"
 				mount_iso $working_iso_file $mount_dir 
 				echo -e "Listing files....... \n\n"
 				tree $mount_dir
@@ -49,6 +48,9 @@ case $1 in
 		copy)
 				echo "Copying files from iso to $1"
 				copy_mode $destination_dir
+				;;
+		*)
+				help
 				;;
 esac
 		
